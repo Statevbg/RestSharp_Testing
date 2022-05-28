@@ -54,7 +54,6 @@ namespace TestZipopotamusApi
             var response = await client.GetAsync(request);
             var location = new SystemTextJsonSerializer().Deserialize<Location>(response);
             //Assert
-            //StringAssert.Contains(expectedPlace, location.Places[0].PlaceName);
             Assert.That(location.Places[0].PlaceName, Is.EqualTo(expectedPlace));
 
         }
