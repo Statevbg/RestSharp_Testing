@@ -19,7 +19,6 @@ namespace RestSharpGitHubCreatingRepoTesting
         public void Setup()
         {
             this.client = new RestClient("https://api.github.com");
-            // this.request = new RestRequest("/user/repos");
             this.client.Authenticator = new HttpBasicAuthenticator("TYPE USER NAME HERE", "TYPE GITHUB TOKEN(must have crud operations rights)");
             
         }
@@ -40,7 +39,6 @@ namespace RestSharpGitHubCreatingRepoTesting
         {
             //Arrange
             this.request = new RestRequest("repos/TYPE USER NAME HERE/ThisRepoIsCreatedByRestSharp");
-            //this.request.AddJsonBody(new { name = "ThisRepoIsUpdatedByRestSharp" });
             this.request.AddHeader("Accept", "application/vnd.github.v3+json");
             //Act
             var response = await this.client.ExecuteAsync(this.request, Method.Get);
@@ -65,17 +63,11 @@ namespace RestSharpGitHubCreatingRepoTesting
         {
             //Arrange
             this.request = new RestRequest("repos/TYPE USER NAME HERE/ThisRepoIsUpdatedByRestSharp");
-            
             this.request.AddHeader("Accept", "application/vnd.github.v3+json");
             //Act
             var response = await this.client.ExecuteAsync(this.request, Method.Delete);
             //Assert
             Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.NoContent));
         }
-
-
-
-
-
     }
 }
