@@ -67,8 +67,6 @@ namespace RestSharpGitHubCreatingRepoTesting
             var url = "repos/TYPE USER NAME HERE/RepoForIssuesTesting/issues";
             this.request = new RestRequest(url);
             //Arrange
-           
-        
             var response = await this.client.ExecuteAsync(this.request, Method.Get);
             var issues = JsonSerializer.Deserialize<List<Issue>>(response.Content);
             //Assert
